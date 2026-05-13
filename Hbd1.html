@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Jagadeesh 💙</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        cursor: none; /* Custom cursor */
+    }
+
+    body {
+        background: #020617;
+        color: white;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Floating Background Particles */
+    .particles-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .particle {
+        position: absolute;
+        background: rgba(56, 189, 248, 0.3);
+        border-radius: 50%;
+        animation: floatUp infinite linear;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) scale(0); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    .container {
+        width: 90%;
+        max-width: 600px;
+        padding: 20px;
+        position: relative;
+        z-index: 10;
+    }
+
+    /* Custom Cursor */
+    .cursor {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #38bdf8;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        box-shadow: 0 0 15px #38bdf8;
+        transition: transform 0.1s ease-out, width 0.2s, height 0.2s;
+    }
+
+    .cursor.click {
+        transform: translate(-50%, -50%) scale(0.5);
+        background: rgba(56, 189, 248, 0.5);
+    }
+
+    /* Glassmorphism Cards */
+    .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 40px 30px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(56, 189, 248, 0.05);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .hidden {
+        opacity: 0;
+        transform: scale(0.9);
+        pointer-events: none;
+        position: absolute;
+        visibility: hidden;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+        color: #e0f2fe;
+        animation: neonGlow 2s infinite alternate;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        color: #bae6fd;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #cbd5e1;
+    }
+
+    @keyframes neonGlow {
+        from { text-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8; }
+        to { text-shadow: 0 0 20px #38bdf8, 0 0 30px #0284c7, 0 0 40px #0284c7; }
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 12px 30px;
+        border: none;
+        border-radius: 50px;
+        margin: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .yes {
+        background: transparent;
+        color: #38bdf8;
+        border: 2px solid #38bdf8;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+
+    .yes:hover {
+        background: #38bdf8;
+        color: #020617;
+        box-shadow: 0 0 20px #38bdf8;
+        transform: scale(1.05);
+    }
+
+    .no {
+        background: transparent;
+        color: #f43f5e;
+        border: 2px solid #f43f5e;
+        box-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+    }
+
+    .no:hover {
+        background: #f43f5e;
+        color: white;
+        box-shadow: 0 0 20px #f43f5e;
+        transform: scale(1.05);
+    }
+
+    .gif {
+        width: 100%;
+        max-width: 280px;
+        border-radius: 15px;
+        margin: 20px 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    .message {
+        min-height: 50px;
+        margin-top: 20px;
+        color: #7dd3fc;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    /* Final Screen Text */
+    .final-message {
+        margin-top: 25px;
+        line-height: 1.8rem;
+        font-size: 1.15rem;
+        color: #e2e8f0;
+        text-align: left;
+        animation: fadeIn 2s;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Confetti & Balloons */
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: -20px;
+        z-index: 100;
+        animation: fall linear forwards;
+    }
+
+    .balloon {
+        position: absolute;
+        bottom: -100px;
+        width: 40px;
+        height: 50px;
+        background: #38bdf8;
+        border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+        animation: floatBalloon 6s ease-in forwards;
+        z-index: 50;
+        box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
+    }
+    .balloon::before {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 10px solid #38bdf8;
+    }
+
+    @keyframes fall {
+        to { transform: translateY(110vh) rotate(720deg); }
+    }
+
+    @keyframes floatBalloon {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+    }
+
+    .timer {
+        margin-top: 25px;
+        color: #facc15;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+    }
+
+    .typing {
+        white-space: pre-line;
+        text-align: left;
+        min-height: 250px;
+        font-size: 1.1rem;
+        color: #bae6fd;
+    }
+    
+    .cursor-blink {
+        border-right: 2px solid #38bdf8;
+        animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+<div class="particles-container" id="particles"></div>
+
+<audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-creativeminds.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+
+    <div id="intro" class="glass">
+        <h1>Hey Jagadeesh 👀</h1>
+        <p style="margin-bottom: 30px;">Let's play a small game...</p>
+        <button class="btn yes" onclick="startGame()">START</button>
+    </div>
+
+    <div id="game" class="glass hidden">
+        <img id="gif" class="gif" src="">
+        <h2 id="questionText"></h2>
+        
+        <div style="margin-top: 25px; position: relative; height: 60px;">
+            <button id="yesBtn" class="btn yes" style="position: absolute; left: 20%; transform: translateX(-50%);">YES</button>
+            <button id="noBtn" class="btn no" style="position: absolute; left: 80%; transform: translateX(-50%);">NO</button>
+        </div>
+        
+        <div id="gameMessage" class="message"></div>
+    </div>
+
+    <div id="friendship" class="glass hidden">
+        <h1 style="font-size: 2.5rem;">💙</h1>
+        <div id="typingText" class="typing cursor-blink"></div>
+        <button id="continueBtn" class="btn yes hidden" onclick="showFinalQuestion()" style="margin-top: 20px;">Continue</button>
+    </div>
+
+    <div id="finalQuestionDiv" class="glass hidden">
+        <h2 style="font-size: 1.6rem; margin-bottom: 30px; line-height: 1.5;">Do you really want this friendship<br>to continue for many more years? 💙</h2>
+        <div style="position: relative; height: 100px;">
+            <button id="finalYes" class="btn yes" style="position: absolute; left: 30%; transform: translateX(-50%); font-size: 1.3rem;">YES</button>
+            <button id="finalNo" class="btn no" style="position: absolute; left: 70%; transform: translateX(-50%);">NO</button>
+        </div>
+        <div id="funnyMsg" class="message"></div>
+    </div>
+
+    <div id="finalScreen" class="glass hidden">
+        <h1 style="font-size: 2.2rem; color: #facc15; text-shadow: 0 0 20px #ca8a04;">🎂 HAPPY BIRTHDAY JAGADEESH 🎂</h1>
+        <img class="gif" src="https://media.tenor.com/JhMfLh1nNFAAAAAC/cat-cute.gif" style="max-width: 220px;">
+        
+        <div class="final-message">
+            Happy Birthday Jagadeesh 🎂<br><br>
+            I genuinely hope we keep celebrating your day for many more birthdays ahead.<br><br>
+            No matter where life takes us, I hope this friendship always stays special.<br><br>
+            I wish you success, peace, good health, and an amazing future ahead.<br><br>
+            May your career grow beautifully, and may life always give you reasons to smile.<br><br>
+            Thanks for existing, idiot 💙
+        </div>
+        
+        <div class="timer" id="timer"></div>
+    </div>
+
+</div>
+
+<script>
+    // Particles System
+    const particlesContainer = document.getElementById('particles');
+    for(let i = 0; i < 30; i++) {
+        let particle = document.createElement('div');
+        particle.classList.add('particle');
+        let size = Math.random() * 5 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
+        particle.style.animationDelay = (Math.random() * 5) + 's';
+        particlesContainer.appendChild(particle);
+    }
+
+    // Custom Cursor Logic
+    const cursor = document.querySelector(".cursor");
+    document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+    });
+    document.addEventListener("mousedown", () => cursor.classList.add("click"));
+    document.addEventListener("mouseup", () => cursor.classList.remove("click"));
+
+    // Audio Playback setup
+    const bgMusic = document.getElementById("bgMusic");
+    bgMusic.volume = 0.4;
+
+    // Easter Egg
+    document.addEventListener("keydown", (e) => {
+        if(e.key.toLowerCase() === "j"){
+            createConfetti(10);
+            alert("J stands for Jagadeesh 💙");
+        }
+    });
+
+    // Game State & Questions
+    const questions = [
+        {
+            q: "Have we ever met in real life?",
+            gif: "https://media.tenor.com/7A2fU4V-Wb0AAAAi/peach-cat.gif",
+            yes: "Wait... WHEN?? 😂",
+            no: "Still feels like we know each other forever 💙",
+            escapeBtn: "none"
+        },
+        {
+            q: "Have we ever talked on phone?",
+            gif: "https://media.tenor.com/J_hB-oH55Y8AAAAi/mochi-cat.gif",
+            yes: "Illegal activity detected 🚨😂",
+            no: "No calls. Just vibes ✨",
+            escapeBtn: "none"
+        },
+        {
+            q: "Have you ever given late replies?",
+            gif: "https://media.tenor.com/8QnUq9f42Z0AAAAi/cats-funny.gif",
+            yes: "FINALLY ACCEPTED 😂",
+            no: "Biggest lie of the year detected 🚨",
+            escapeBtn: "yes" 
+        },
+        {
+            q: "Have you ever ignored my messages?",
+            gif: "https://media.tenor.com/L8lWwTqWnRwAAAAi/cat-ignore.gif",
+            yes: "Pain. Betrayal. Heartbreak 💔😂",
+            no: "Good save 😌",
+            escapeBtn: "no"
+        },
+        {
+            q: "Did our friendship survive all these years?",
+            gif: "https://media.tenor.com/fA1BtcwN3dEAAAAi/milk-and-mocha-hug.gif",
+            yes: "Against all odds 💙",
+            no: "Are you sure about that? 🤨", // Fallback, no shouldn't escape here
+            escapeBtn: "none"
+        }
+    ];
+
+    let currentQ = 0;
+    let escapeCount = 0;
+    const maxEscapes = { yes: 3, no: 4 };
+
+    // DOM Elements
+    const screens = {
+        intro: document.getElementById("intro"),
+        game: document.getElementById("game"),
+        friendship: document.getElementById("friendship"),
+        finalQuestion: document.getElementById("finalQuestionDiv"),
+        final: document.getElementById("finalScreen")
+    };
+    
+    const gameEls = {
+        gif: document.getElementById("gif"),
+        text: document.getElementById("questionText"),
+        yesBtn: document.getElementById("yesBtn"),
+        noBtn: document.getElementById("noBtn"),
+        msg: document.getElementById("gameMessage")
+    };
+
+    function switchScreen(hideId, showId) {
+        screens[hideId].classList.add("hidden");
+        setTimeout(() => {
+            screens[showId].classList.remove("hidden");
+        }, 500); // Wait for CSS transition
+    }
+
+    function startGame() {
+        bgMusic.play().catch(e => console.log("Audio play blocked until interaction"));
+        switchScreen('intro', 'game');
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentQ];
+        gameEls.text.innerText = qData.q;
+        gameEls.gif.src = qData.gif;
+        gameEls.msg.innerText = "";
+        
+        // Reset Buttons
+        gameEls.yesBtn.style.position = "absolute";
+        gameEls.yesBtn.style.left = "30%";
+        gameEls.yesBtn.style.top = "0px";
+        
+        gameEls.noBtn.style.position = "absolute";
+        gameEls.noBtn.style.left = "70%";
+        gameEls.noBtn.style.top = "0px";
+
+        escapeCount = 0;
+        
+        // Only show YES button for the last question for dramatic effect, or keep both.
+        if (currentQ === questions.length - 1) {
+            gameEls.noBtn.style.display = "none";
+            gameEls.yesBtn.style.left = "50%";
+        } else {
+            gameEls.noBtn.style.display = "inline-block";
+        }
+    }
+
+    function handleAnswer(isYes) {
+        const qData = questions[currentQ];
+        gameEls.msg.innerText = isYes ? qData.yes : qData.no;
+        createConfetti(15);
+        
+        // Disable buttons temporarily
+        gameEls.yesBtn.pointerEvents = "none";
+        gameEls.noBtn.pointerEvents = "none";
+
+        setTimeout(() => {
+            currentQ++;
+            if(currentQ < questions.length) {
+                gameEls.yesBtn.pointerEvents = "auto";
+                gameEls.noBtn.pointerEvents = "auto";
+                loadQuestion();
+            } else {
+                startFriendshipMessage();
+            }
+        }, 1500);
+    }
+
+    // Button Click Events
+    gameEls.yesBtn.addEventListener("click", () => handleAnswer(true));
+    gameEls.noBtn.addEventListener("click", () => handleAnswer(false));
+
+    // Button Hover Escaping Logic
+    function moveButton(btn) {
+        const x = Math.random() * 60 + 10; // 10% to 70% width
+        const y = Math.random() * 40 - 20; // Slight up/down
+        btn.style.left = x + "%";
+        btn.style.top = y + "px";
+    }
+
+    gameEls.yesBtn.addEventListener("mouseover", () => {
+        if (questions[currentQ].escapeBtn === "yes" && escapeCount < maxEscapes.yes) {
+            moveButton(gameEls.yesBtn);
+            escapeCount++;
+        }
+    });
+
+    gameEls.noBtn.addEventListener("mouseover", () => {
+        if (questions[currentQ].escapeBtn === "no" && escapeCount < maxEscapes.no) {
+            moveButton(gameEls.noBtn);
+            escapeCount++;
+        }
+    });
+
+    // Friendship Message Section
+    function startFriendshipMessage() {
+        switchScreen('game', 'friendship');
+        const text = `It's honestly crazy...\n\nWe never met.\nNever called.\nNever even saw each other.\n\nStill somehow...\nthis friendship became one of the most genuine parts of life.\n\nFrom random chats...\nto stupid conversations...\nto surviving late replies somehow 😑😂\n\n5 years later...\nthe bond still feels special.`;
+        
+        const typingEl = document.getElementById("typingText");
+        typingEl.innerHTML = "";
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                typingEl.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 40); // Typing speed
+            } else {
+                typingEl.classList.remove("cursor-blink");
+                document.getElementById("continueBtn").classList.remove("hidden");
+            }
+        }
+        setTimeout(typeWriter, 800);
+    }
+
+    function showFinalQuestion() {
+        switchScreen('friendship', 'finalQuestion');
+    }
+
+    // Final Final Question Logic
+    const finalYes = document.getElementById("finalYes");
+    const finalNo = document.getElementById("finalNo");
+    const funnyMsg = document.getElementById("funnyMsg");
+    let finalEscapeCount = 0;
+
+    finalNo.addEventListener("mouseover", () => {
+        if (finalEscapeCount < 10) {
+            moveButton(finalNo);
+            finalEscapeCount++;
+            const teases = ["Idiot 😭", "You can't escape this friendship 😂", "Try again 😌", "Wrong button detected 🚨"];
+            funnyMsg.innerText = teases[Math.floor(Math.random() * teases.length)];
+        }
+    });
+    
+    finalNo.addEventListener("click", () => {
+        // If they somehow click it
+        funnyMsg.innerText = "Nice try, but you're stuck with me! 😂 Click YES.";
+    });
+
+    finalYes.addEventListener("click", () => {
+        switchScreen('finalQuestion', 'final');
+        triggerCelebration();
+    });
+
+    // Celebrations (Confetti & Balloons)
+    function triggerCelebration() {
+        createConfetti(100);
+        createBalloons(8);
+        calculateFriendshipTime();
+    }
+
+    function createConfetti(amount) {
+        const colors = ['#38bdf8', '#e0f2fe', '#facc15', '#f43f5e', '#a855f7'];
+        for (let i = 0; i < amount; i++) {
+            let confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            document.body.appendChild(confetti);
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.width = Math.random() * 8 + 5 + "px";
+            confetti.style.height = Math.random() * 8 + 5 + "px";
+            confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+            setTimeout(() => confetti.remove(), 5000);
+        }
+    }
+
+    function createBalloons(amount) {
+        const colors = ['#38bdf8', '#facc15', '#f43f5e', '#a855f7', '#4ade80'];
+        for(let i = 0; i < amount; i++) {
+            let balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+            document.body.appendChild(balloon);
+            let color = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.background = color;
+            // Update the tail color to match
+            balloon.style.setProperty('--tail-color', color);
+            
+            balloon.style.left = (Math.random() * 80 + 10) + "vw";
+            balloon.style.animationDuration = (Math.random() * 4 + 4) + "s";
+            balloon.style.animationDelay = (Math.random() * 1.5) + "s";
+            
+            // Add custom style for pseudo element via inline style trick or just let it be default blue
+            setTimeout(() => balloon.remove(), 9000);
+        }
+    }
+
+    function calculateFriendshipTime() {
+        const startDate = new Date("2019-01-01"); // Adjust date as needed
+        const today = new Date();
+        const diff = today - startDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById("timer").innerHTML = `💙 Friendship Running Strong For ${days} Days`;
+    }
+
+</script>
+
+</body>
+</html>
