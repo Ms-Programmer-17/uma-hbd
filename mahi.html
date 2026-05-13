@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Uma 💙</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+/* MOVING BG */
+
+@keyframes bgMove{
+0%{
+background-position:0% 50%;
+}
+50%{
+background-position:100% 50%;
+}
+100%{
+background-position:0% 50%;
+}
+}
+
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:0;
+}
+
+.circle{
+position:absolute;
+border-radius:50%;
+background:rgba(255,255,255,.05);
+animation:float 12s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh) scale(0);
+opacity:0;
+}
+50%{
+opacity:1;
+}
+100%{
+transform:translateY(-20vh) scale(1);
+opacity:0;
+}
+}
+
+/* CARD */
+
+.card{
+width:90%;
+max-width:700px;
+padding:35px;
+border-radius:30px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.1);
+box-shadow:0 0 30px rgba(0,0,0,.4);
+text-align:center;
+position:relative;
+z-index:2;
+animation:fade .7s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.hidden{
+display:none;
+}
+
+h1{
+font-size:2.3rem;
+margin-bottom:20px;
+color:#f8fafc;
+}
+
+p{
+font-size:1.1rem;
+line-height:1.8rem;
+color:#e2e8f0;
+}
+
+/* GIF */
+
+.gif{
+width:250px;
+height:250px;
+object-fit:contain;
+background:rgba(255,255,255,.05);
+padding:10px;
+border-radius:20px;
+margin:20px 0;
+box-shadow:0 0 25px rgba(255,255,255,.15);
+}
+
+/* BUTTONS */
+
+.btn{
+padding:13px 28px;
+border:none;
+border-radius:40px;
+margin-top:25px;
+font-size:1rem;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+}
+
+.next{
+background:#38bdf8;
+color:black;
+}
+
+.alt{
+background:#f472b6;
+color:white;
+}
+
+/* TYPING */
+
+.typing{
+border-right:1px solid rgba(255,255,255,.5);
+white-space:pre-line;
+overflow:hidden;
+display:inline-block;
+animation:blink .7s infinite;
+}
+
+@keyframes blink{
+50%{
+border-color:transparent;
+opacity:.8;
+}
+}
+
+/* HEARTS */
+
+.heart{
+position:absolute;
+font-size:20px;
+animation:fly 6s linear infinite;
+opacity:.7;
+}
+
+@keyframes fly{
+0%{
+transform:translateY(100vh) rotate(0deg);
+opacity:0;
+}
+30%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+}
+
+/* POETRY */
+
+.poetry{
+margin-top:20px;
+font-size:1.15rem;
+line-height:2rem;
+color:#f8fafc;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+body{
+padding:20px;
+overflow:auto;
+}
+
+.card{
+padding:25px;
+}
+
+h1{
+font-size:1.7rem;
+}
+
+.gif{
+width:200px;
+height:200px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="bg" id="bg"></div>
+
+<!-- CARD 1 -->
+
+<div class="card" id="card1">
+
+<h1 id="introText"></h1>
+
+<img class="gif"
+src="https://i.pinimg.com/originals/49/a2/bb/49a2bb1e7b9a8a376e2dc8f00113c33f.gif">
+
+<p style="margin-top:15px;">
+Some people become comfort without even trying 💙
+</p>
+
+<button class="btn next" onclick="nextCard(1,2)">
+Continue
+</button>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="card hidden" id="card2">
+
+<h1>One Small Question 🌸</h1>
+
+<img class="gif"
+src="data:image/jpeg;base64,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">
+
+<p>
+Do you know...<br><br>
+Some people enter life softly,<br>
+but slowly become one of the safest places ever?
+</p>
+
+<button class="btn alt" onclick="showMsg()">
+Maybe 👀
+</button>
+
+<div id="secretMsg"
+style="margin-top:20px;
+font-size:1.1rem;
+color:#f9a8d4;">
+</div>
+
+<button class="btn next"
+style="display:none;"
+id="next2"
+onclick="nextCard(2,3)">
+Continue
+</button>
+
+</div>
+
+<!-- CARD 3 -->
+
+<div class="card hidden" id="card3">
+
+<h1>For Uma 💙</h1>
+
+<img class="gif"
+src="https://media.tenor.com/BPQ5ticTMNkAAAAj/manu-mann.gif">
+
+<div class="poetry">
+
+Some people are loud like celebrations...<br>
+Some people are calm like moonlight...<br><br>
+
+And then there is you, Uma 🌙<br><br>
+
+A person who became comfort,<br>
+peace,<br>
+chaos,<br>
+annoyance,<br>
+and happiness... all together 💙<br><br>
+
+Even on silent days,<br>
+your presence somehow feels warm.<br><br>
+
+Maybe that's why<br>
+conversations with you never feel ordinary.<br><br>
+
+And no matter where life goes...<br>
+I'll always wish the best for you 🌸
+
+</div>
+
+<button class="btn next"
+onclick="nextCard(3,4)">
+One Last Thing
+</button>
+
+</div>
+
+<!-- CARD 4 -->
+
+<div class="card hidden" id="card4">
+
+<h1>💌</h1>
+
+<img class="gif"
+src="https://i.pinimg.com/originals/cd/4f/81/cd4f8199d49badf7b90277f8b13f5186.gif">
+
+<p id="finalTyping" class="typing"></p>
+
+</div>
+
+<script>
+
+/* BACKGROUND CIRCLES */
+
+const bg=document.getElementById("bg");
+
+for(let i=0;i<25;i++){
+
+let c=document.createElement("div");
+
+c.classList.add("circle");
+
+let size=Math.random()*120+40;
+
+c.style.width=size+"px";
+c.style.height=size+"px";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.animationDuration=
+Math.random()*10+8+"s";
+
+bg.appendChild(c);
+
+}
+
+/* HEARTS */
+
+setInterval(()=>{
+
+let h=document.createElement("div");
+
+h.classList.add("heart");
+
+h.innerHTML="💙";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=
+(Math.random()*20+15)+"px";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},6000);
+
+},700);
+
+/* INTRO TYPING */
+
+const intro=
+"Uma... 🌸\n\nHave some patience.\nI wanted to show you something beautiful 💙";
+
+let i=0;
+
+function typeIntro(){
+
+if(i<intro.length){
+
+document.getElementById("introText")
+.innerHTML+=intro.charAt(i);
+
+i++;
+
+setTimeout(typeIntro,45);
+
+}
+
+}
+
+typeIntro();
+
+/* CARD SWITCH */
+
+function nextCard(hide,show){
+
+document.getElementById("card"+hide)
+.classList.add("hidden");
+
+document.getElementById("card"+show)
+.classList.remove("hidden");
+
+if(show===4){
+startFinalTyping();
+}
+
+}
+
+/* SECRET MESSAGE */
+
+function showMsg(){
+
+document.getElementById("secretMsg")
+.innerHTML=
+"Exactly 😌✨";
+
+document.getElementById("next2")
+.style.display="inline-block";
+
+}
+
+/* FINAL MESSAGE */
+
+const finalText=
+"Thank you for existing in my life, Uma 💙\n\nSometimes people become special without any reason.\n\nAnd maybe...\nyou became one of those people.";
+
+let j=0;
+
+function startFinalTyping(){
+
+function type(){
+
+if(j<finalText.length){
+
+document.getElementById("finalTyping")
+.innerHTML+=finalText.charAt(j);
+
+j++;
+
+setTimeout(type,45);
+
+}
+
+}
+
+type();
+
+}
+
+</script>
+
+</body>
+</html>
